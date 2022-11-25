@@ -115,10 +115,19 @@ const Detail = ({ id }) => {
             behavior: "smooth"
         });
    }
+   const back = () =>{
+      if( window.history.length > 2 ){
+        window.history.go(-1);
+      }
+      else{
+        location.href = '/';
+      }
+      
+   }
     return (
         <section className="h-full bg-black">
             <div style={{ maxWidth: "800px",margin:"auto",background: "#0c0c0c", borderRadius: "10px", padding:"10px" }} className="relative flex flex-col flex-nowrap" >
-                <div className="w-full backSticky"><FontAwesomeIcon icon={faArrowLeftLong} className="text-2xl" onClick={() => window.history.go(-1)} /></div>
+                <div className="w-full backSticky"><FontAwesomeIcon icon={faArrowLeftLong} className="text-2xl" onClick={() => back()} /></div>
                 <div className="flex flex-row items-center justify-center mb-10">
                     <div className="flex flex-col w-full">
                         <div id="carouselExampleCrossfade" className="relative w-full p-5 carousel slide carousel-fade" data-bs-ride="carousel">
@@ -161,7 +170,6 @@ const Detail = ({ id }) => {
                                 <div className="w-64 h-8 "></div>
                                 <div className="detailRight">
                                     <a href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`}className="detailRentalOwnerName hover:underline">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Owner Name"]}</a>
-                                    <a href={ownerDetail && ownerDetail.length > 0 && "/rental_owner?query="+ownerDetail[0]["id"]}className="detailRentalOwnerName hover:underline">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Owner Name"]}</a>
                                     <p className="mb-5 text-base text-white">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Category"]}</p>
                                     <p className="py-5 text-xl font-extrabold text-white " style={{ borderTop: "1px solid #333" }}>{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Price"]}</p>
                                     <a href = { ownerDetail && ownerDetail.length > 0 && "tel:"+ ownerDetail[0]["fields"]["Store Phone Number"]}className="flex flex-row justify-center storePhoneNumber"><FontAwesomeIcon icon={faPhone} className="text-xl" /><p id="PhoneNumber" className="mx-2 text-white">Call the store</p></a>

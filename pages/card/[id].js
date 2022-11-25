@@ -10,8 +10,3 @@ export default function CardsPage() {
     </>
   )
 }
-// export async function getStaticProps() {
-//   return {
-//     props: {}
-//   }
-// }

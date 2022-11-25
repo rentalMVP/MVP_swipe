@@ -3,10 +3,11 @@ import Link from "next/link";
 import { useState, useEffect } from "react"
 import { collection, getDocs, addDoc, orderBy, query, limit, startAfter, where, startAt } from "firebase/firestore"
 import { db } from "../../lib/init-firebase"
-import timediff from "timediff"
+// import timediff from "timediff"
 import RandomCarousel from "./randomCarousel"
 import { faArrowLeftLong } from "@fortawesome/free-solid-svg-icons"
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
+import DetailCarousel from "./detailCarousel";
 
 const Detail = ({ id }) => {
     const [pageContent, setPageContent] = useState([]);
@@ -14,16 +15,6 @@ const Detail = ({ id }) => {
     const [drawImagePane, setDrawImagePane] = useState([]);
     const [itemDesc, setItemDesc] = useState('');
     const [ownerDetail, setOwnerDetail] = useState([]);
-    const getRentalOwnerDetail = async (id) => {
-        let temp = [];
-        const listCollectionRef = collection(db, 'rental_owners');
-        let q = query(listCollectionRef, where("id", "==", id));
-        const querySnapshot = await getDocs(q);
-        querySnapshot.forEach((doc) => {
-            temp.push(doc.data())
-        });
-        setOwnerContent(temp)
-    }
     const getDetails = async (id) => {
         let temp = [];
         let searchID = Number(id);
@@ -52,7 +43,7 @@ const Detail = ({ id }) => {
                 type="button"
                 data-bs-target="#carouselExampleCrossfade"
                 data-bs-slide-to={i}
-                aria-label={"Slide " + (i + 1)} key = {i}
+                aria-label={"Slide " + (i + 1)} key={i}
             ></button>)
         }
         setDrawCarouselButton(temp);
@@ -75,9 +66,8 @@ const Detail = ({ id }) => {
         }
         setDrawImagePane(tempImage);
     }
-    useEffect(async () => {
+    useEffect(() => {
         id && getDetails(id);
-        scrollToTop();
     }, [id]);
     useEffect(() => {
         pageContent && pageContent.length > 0 && drawCarousel();
@@ -85,10 +75,6 @@ const Detail = ({ id }) => {
         pageContent && pageContent.length > 0 && getOwnerData(pageContent[0]["fields"]["Rental Owner"]);
 
     }, [pageContent]);
-    const datetime = (fullTime) => {
-        let timeDifference = timediff(new Date(fullTime), new Date());
-        return (timeDifference["days"] + " days " + timeDifference["hours"] + " hours ago");
-    }
     const getOwnerData = async (ownerId) => {
         let temp = [];
         let searchID = ownerId;
@@ -101,63 +87,28 @@ const Detail = ({ id }) => {
         setOwnerDetail(temp);
     }
 
-    const [showMore, setShowMore] = useState(true);
-    let showText;
-    if (showMore) showText = 'Show more...'
-    if (!showMore) showText = 'Show less...'
-
-    const showPhoneNumber = () => {
-        document.getElementById('PhoneNumber').innerText = ownerDetail[0]["fields"]["Store Phone Number"];
-    }
-    const scrollToTop = () =>{
+    const scrollToTop = () => {
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
-   }
-   const back = () =>{
-      if( window.history.length > 2 ){
-        window.history.go(-1);
-      }
-      else{
-        location.href = '/';
-      }
-      
-   }
+    }
+    const back = () => {
+        if (window.history.length > 2) {
+            window.history.go(-1);
+        }
+        else {
+            location.href = '/';
+        }
+
+    }
     return (
         <section className="h-full bg-black">
-            <div style={{ maxWidth: "800px",margin:"auto",background: "#0c0c0c", borderRadius: "10px", padding:"10px" }} className="relative flex flex-col flex-nowrap" >
+            <div style={{ maxWidth: "800px", margin: "auto", background: "#0c0c0c", borderRadius: "10px", padding: "10px" }} className="relative flex flex-col flex-nowrap" >
                 <div className="w-full backSticky"><FontAwesomeIcon icon={faArrowLeftLong} className="text-2xl" onClick={() => back()} /></div>
                 <div className="flex flex-row items-center justify-center mb-10">
                     <div className="flex flex-col w-full">
-                        <div id="carouselExampleCrossfade" className="relative w-full p-5 carousel slide carousel-fade" data-bs-ride="carousel">
-                            <div className="absolute bottom-0 left-0 right-0 flex justify-center p-0 mb-4 carousel-indicators">
-                                {drawCarouselButton}
-                            </div>
-                            <div className="relative flex items-center w-full overflow-hidden carousel-inner">
-                                {drawImagePane}
-                            </div>
-                            <button
-                                className="absolute top-0 bottom-0 left-0 flex items-center justify-center p-0 text-center border-0 carousel-control-prev hover:outline-none hover:no-underline focus:outline-none focus:no-underline"
-                                type="button"
-                                data-bs-target="#carouselExampleCrossfade"
-                                data-bs-slide="prev"
-                                id="prev"
-                            >
-                                <span className="inline-block bg-no-repeat carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Previous</span>
-                            </button>
-                            <button
-                                className="absolute top-0 bottom-0 right-0 flex items-center justify-center p-0 text-center border-0 carousel-control-next hover:outline-none hover:no-underline focus:outline-none focus:no-underline"
-                                type="button"
-                                data-bs-target="#carouselExampleCrossfade"
-                                data-bs-slide="next"
-                                id="next"
-                            >
-                                <span className="inline-block bg-no-repeat carousel-control-next-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Next</span>
-                            </button>
-                        </div>
+                        {pageContent && pageContent.length > 0 && <DetailCarousel imageGroup={pageContent[0]["fields"]["Item Image"]} />}
                         <div className="relative flex flex-row w-full px-5 pr-5">
                             <div>
                                 <p className="detailTitle">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Name"]}</p>
@@ -169,18 +120,19 @@ const Detail = ({ id }) => {
                             <div className="w-64 callStoreButton">
                                 <div className="w-64 h-8 "></div>
                                 <div className="detailRight">
-                                    <a href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`}className="detailRentalOwnerName hover:underline">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Owner Name"]}</a>
+                                    <Link href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`}><p className="detailRentalOwnerName hover:underline">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Owner Name"]}</p></Link>
                                     <p className="mb-5 text-base text-white">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Category"]}</p>
                                     <p className="py-5 text-xl font-extrabold text-white " style={{ borderTop: "1px solid #333" }}>{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Price"]}</p>
-                                    <a href = { ownerDetail && ownerDetail.length > 0 && "tel:"+ ownerDetail[0]["fields"]["Store Phone Number"]}className="flex flex-row justify-center storePhoneNumber"><FontAwesomeIcon icon={faPhone} className="text-xl" /><p id="PhoneNumber" className="mx-2 text-white">Call the store</p></a>
+                                    <a href={ownerDetail && ownerDetail.length > 0 && "tel:" + ownerDetail[0]["fields"]["Store Phone Number"]} className="flex flex-row justify-center storePhoneNumber"><FontAwesomeIcon icon={faPhone} className="text-xl" /><p id="PhoneNumber" className="mx-2 text-white">Call the store</p></a>
                                 </div>
 
                             </div>
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row items-center justify-start py-5 mx-5 mr-5" style={{ borderTop: "1px solid #333"}}>
-                    <img src={ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Rental Store photos"]} style={{ borderRadius: "50%" }} className="w-16 h-16 "/>
+
+                <div className="flex flex-row items-center justify-start py-5 mx-5 mr-5" style={{ borderTop: "1px solid #333" }}>
+                    <img src={ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Rental Store photos"]} style={{ borderRadius: "50%" }} className="w-16 h-16 " />
                     <div className="flex flex-col">
                         <Link href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`}>
                             <p className="mx-3 mb-1 text-lg font-extrabold text-white cursor-pointer hover:underline">{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Name"]}</p>
@@ -192,10 +144,10 @@ const Detail = ({ id }) => {
                 <div className="flex flex-row items-center justify-between w-full detailSticky">
                     <div className="flex flex-col ">
                         <a href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`} className="text-sm hover:underline">{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Name"]}</a>
-                        <p className="text-lg font-extrabold ">{ pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Price"]}</p>
+                        <p className="text-lg font-extrabold ">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Price"]}</p>
                     </div>
                     <div>
-                        <a style={{ background: "#005ec2" }} className="flex flex-row items-center justify-center w-16 h-12 rounded-xl" href={ ownerDetail && ownerDetail.length > 0 && "tel:" + ownerDetail[0]["fields"]["Store Phone Number"]}><FontAwesomeIcon icon={faPhone} className="text-xl "/></a>
+                        <a style={{ background: "#005ec2" }} className="flex flex-row items-center justify-center w-16 h-12 rounded-xl" href={ownerDetail && ownerDetail.length > 0 && "tel:" + ownerDetail[0]["fields"]["Store Phone Number"]}><FontAwesomeIcon icon={faPhone} className="text-xl " /></a>
                     </div>
                 </div>
 

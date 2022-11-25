@@ -910,6 +910,12 @@ a {
 .card:hover .prev,  .card:active .prev, .card:focus .prev{
   display: flex;
 }
+.detailCarousel:hover .next,  .detailCarousel:active .next, .detailCarousel:focus .next{
+  display: flex;
+}
+.detailCarousel:hover .prev,  .detailCarousel:active .prev, .detailCarousel:focus .prev{
+  display: flex;
+}
 
 
 

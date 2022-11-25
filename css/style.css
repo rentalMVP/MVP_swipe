@@ -573,6 +573,9 @@ a {
   font-size: 18px;
   color: white;
   font-weight: 600;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 

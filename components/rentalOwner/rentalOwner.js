@@ -130,16 +130,14 @@ const RentalOwner = ({ id }) => {
                         <div className="flex flex-row items-center justify-center pb-10 my-5" style={{ borderBottom: "1px solid #ffffff1a" }}>
                             <a className="flex flex-row items-center" id="callButton" href={ownerContent && ownerContent.length > 0 && "tel:" + ownerContent[0]["fields"]["Store Phone Number"]}><FontAwesomeIcon icon={faPhone} className=" text-lg mr-2.5" /> Call Us</a>
                             <a href={ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Website"]} className="flex flex-row items-center websiteLink"><FontAwesomeIcon icon={faGlobe} className="text-lg " /><p className="websiteText">Website</p> </a>
-                            <button style={{ border: "1px solid #333", borderRadius: "10px" }} className="flex flex-row items-center py-2 pb-2 px-7 bg-transparent mx-2.5">Google Rating {ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Google Rating"].toFixed(1) + " ( " + ownerContent[0]["fields"]["Reviews"] + " )"}  </button>
+                            <button style={{ border: "1px solid #333", borderRadius: "10px" }} className="flex flex-row items-center py-2 pb-2 px-7 bg-transparent mx-2.5">Google Rating {ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Google Rating"].toFixed(1) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}  </button>
                         </div>
                     </div>
 
                     <Gallery showData={showData} lastPage={lastPage} sticky={sticky} />
                     <div className="flex flex-row justify-between w-full detailSticky">
-                        <div className="flex flex-col ">
-                            {/* <p className="text-sm">{ownerContent && ownerContent.length > 0 && ("  Google Rating " + ownerContent[0]["fields"]["Google Rating"].toFixed(1)) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}</p>
-                            <p className="text-lg font-extrabold ">{ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Name"]}</p> */}
-                            <p className="text-sm">{ownerContent && ownerContent.length > 0 && ("  Google Rating " + ownerContent[0]["fields"]["Google Rating"]) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}</p>
+                        <div className="flex flex-col">
+                            <p className="text-sm">{ownerContent && ownerContent.length > 0 && (" Google Rating " + ownerContent[0]["fields"]["Google Rating"]) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}</p>
                             <p className="text-base font-extrabold ">{ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Name"]}</p>
                         </div>
                         <div>

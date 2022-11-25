@@ -15,7 +15,7 @@ const DetailCarousel = ({ imageGroup}) => {
     }
     const imageArray = [];
     for(let i in imageGroup.split(",")){
-        imageArray.push("http://" + imageGroup.split(",")[i].replace(" ",""));
+        imageArray.push("https://" + imageGroup.split(",")[i].replace(" ",""));
     }
     const next = () => {
         let tempId;

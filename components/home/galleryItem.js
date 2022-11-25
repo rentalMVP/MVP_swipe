@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { db } from '../../lib/init-firebase';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import Carousel from './carousel';
-import { async } from '@firebase/util';
 const GalleryItem = ({ fields, index, id }) => {
     const [rentalOwenrName, setRentalOwnerName] = useState('');
     useEffect(() => {

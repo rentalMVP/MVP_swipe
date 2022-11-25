@@ -120,8 +120,9 @@ const Detail = ({ id }) => {
                             <div className="w-64 callStoreButton">
                                 <div className="w-64 h-8 "></div>
                                 <div className="detailRight">
-                                    <Link href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`}><p className="detailRentalOwnerName hover:underline">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Owner Name"]}</p></Link>
-                                    <p className="mb-5 text-base text-white">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Category"]}</p>
+                                    <p className="detailRentalOwnerName ">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Name"]}</p>
+                                    <Link href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`}>
+                                        <p className="mb-5 text-base text-white hover:underline">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Owner Name"]}</p></Link>
                                     <p className="py-5 text-xl font-extrabold text-white " style={{ borderTop: "1px solid #333" }}>{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Price"]}</p>
                                     <a href={ownerDetail && ownerDetail.length > 0 && "tel:" + ownerDetail[0]["fields"]["Store Phone Number"]} className="flex flex-row justify-center storePhoneNumber"><FontAwesomeIcon icon={faPhone} className="text-xl" /><p id="PhoneNumber" className="mx-2 text-white">Call the store</p></a>
                                 </div>

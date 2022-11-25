@@ -1,12 +1,10 @@
 import Search from "../components/home/search"
 import Gallery from "../components/home/gallery"
-import local_datas from "./../data"
 import { useState, useEffect } from "react"
 import { collection, getDocs, addDoc, orderBy, query, limit, startAfter, where, startAt } from "firebase/firestore"
 import { db } from "../lib/init-firebase";
 import Airtable from "airtable"
 import Header from "../components/navbar"
-import ScrollToTop from "../components/scrollToTop"
 export default function IndexPage() {
   const [listCategory, setListCategory] = useState([]);
   const [category, setCategory] = useState("All");
@@ -59,18 +57,6 @@ export default function IndexPage() {
       let length = temp.length;
       setLastDocument(temp[length - 1]["fields"]["Item ID"])
       lastDocument ? setShowData([...showData, ...temp]) : setShowData([...temp]);
-      // setNewStart(false)
-      // console.log(showData)
-      // console.log("other", category)
-      // let q;
-      // q = query(listCollectionRef, orderBy("fields.Item ID"), where("fields.Rental Category", "==", category),limit(30));
-      // const querySnapshot = await getDocs(q);
-      // querySnapshot.forEach((doc) => {
-      //   temp.push(doc.data())
-      // });
-      // console.log(temp)
-      // setNewStart(false);
-      // const q = query(listCollectionRef, orderBy("fields.Item ID"), where("fields.Rental Category", "==", category));
     }
   }
   useEffect(() => {
@@ -99,7 +85,6 @@ export default function IndexPage() {
           "Rental Owner": record._rawJson.fields["Rental Owner"],
           "Rental Category": record._rawJson.fields["Rental Category"],
           "Added to Firebase": true,
-          // "Last Modified": "2022-11-03T06:12:55.000Z"
         }, { typecast: true }, function (err, record) {
           if (err) {
             console.error(err);

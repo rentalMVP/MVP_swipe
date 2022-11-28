@@ -102,23 +102,23 @@ const RentalOwner = ({ id }) => {
     }
     return (
         <>
-            <section className="p-4 bg-black sticky-top">
-                <div style={{ maxWidth: "1440px", margin: "auto" }} className="flex flex-row justify-between">
+            <section className="py-4 bg-black sticky-top">
+                <div style={{ maxWidth: "1315px", margin: "auto", paddingRight:"32px", paddingLeft:"32px" }} className="flex flex-row justify-between ownerTop">
                     <Link href='/' >
                         <div className='flex flex-row items-center justify-start cursor-pointer logo'>
-                            <img src='https://uploads-ssl.webflow.com/5efdc8a4340de947404995b4/633641f1a9242e39af156ff9_Swiftdrop.svg' className="logoImage w-7" />
+                            <img src='https://uploads-ssl.webflow.com/5efdc8a4340de947404995b4/633641f1a9242e39af156ff9_Swiftdrop.svg' className="h-auto logoImage" />
                         </div>
                     </Link>
                     <div className="flex flex-row items-center justify-around p-2 ownerNavbar rounded-3xl" style={{ border:"1px solid #333"}} >
                         <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl" />
-                        <input type="text" className="w-full p-1 mx-2 text-base text-white bg-transparent outline-none" id="home" placeholder="e.g.SnowBoards" onClick={ (e) => search(e)}/>
+                        <input type="text" className="w-full p-1 text-base text-white bg-transparent outline-none" id="home" placeholder="e.g.SnowBoards" onClick={ (e) => search(e)}/>
                     </div>
 
                 </div>
             </section>
             <section>
-                <div className="h-full py-12 pb-0 bg-black">
-                    <div style={{ maxWidth: "1440px", margin: "auto" }} className="relative flex flex-col mb-5 bg-black rounded-lg">
+                <div className="h-full py-0 pb-0 bg-black">
+                    <div className="relative flex flex-col mb-5 bg-black rounded-lg">
                         <div className="ownerDetailPane">
                             {ownerContent && ownerContent.length > 0 && <img src={ownerContent[0]["fields"]["Rental Store photos"]} className="bg-white bg-cover ownerImage" />
                             }
@@ -134,8 +134,8 @@ const RentalOwner = ({ id }) => {
                         </div>
                     </div>
 
-                    <Gallery showData={showData} lastPage={lastPage} sticky={sticky} />
-                    <div className="flex flex-row justify-between w-full detailSticky">
+                    <Gallery showData={showData} lastPage={lastPage} sticky={sticky} style={{ width:"95vw"}}/>
+                    <div className="flex flex-row justify-between w-full detailSticky" style={{ paddingLeft:"20px", paddingRight:"20px"}}>
                         <div className="flex flex-col">
                             <p className="text-sm">{ownerContent && ownerContent.length > 0 && (" Google Rating " + ownerContent[0]["fields"]["Google Rating"]) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}</p>
                             <p className="text-base font-extrabold ">{ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Name"]}</p>

@@ -70,7 +70,7 @@ const DetailCarousel = ({ imageGroup}) => {
         }
     }
     return (
-        <div className="relative p-5 detailCarousel">
+        <div className="relative detailCarousel">
             <img src={backgroundImage} className="flex items-center justify-center m-auto rounded-lg" onTouchStart={ (e) => handleTouchStart(e)} onTouchMove = {(e) => handleTouchMove(e)}/>
             <div className="absolute top-0 flex items-center justify-center h-full bg-transparent right-5 w-9 next"  ><FontAwesomeIcon icon={faSquareCaretRight} style={{ fontSize: '24px', color: "#d89d36", display: !nextShow ? "none" : "flex" }} onClick={() => next()} /></div>
             <div className="absolute top-0 flex items-center justify-center h-full bg-transparent left-5 w-9 prev" ><FontAwesomeIcon icon={faSquareCaretLeft} style={{ fontSize: '24px', color: "#d89d36", display: !prevShow ? "none" : "flex" }} onClick={() => prev()} /></div>

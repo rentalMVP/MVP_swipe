@@ -71,12 +71,12 @@ const Search = ({ queryText }) => {
     return (
         <>  
             <Header/>
-            <section className="h-full pb-12 bg-black">
+            <section className="w-full bg-black search">
             <p className="homeTitle">RENT & ENJOY. </p>
             <div className="m-auto homeTitleBackground"></div>
             <p className="m-auto my-4 mb-6 text-xl font-light text-center text-white homeDetail">Explore Sydney's Largest Rental Directory.</p>
                 <div className="flex flex-row items-center justify-around searchBox">
-                    <FontAwesomeIcon icon={faSearch} className=" text-xl mx-2.5" />
+                    <FontAwesomeIcon icon={faSearch} className="text-xl text-white " />
                     <input type="text" className="w-full p-1 text-base text-white bg-transparent outline-none home_search mx-2.5" id="homeSearch" placeholder="e.g.SnowBoards"  onKeyDown ={ (e) =>search(e) }/>
                 </div>
             </section>

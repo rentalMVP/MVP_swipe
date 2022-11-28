@@ -26,51 +26,10 @@ const Detail = ({ id }) => {
         });
         setPageContent(temp);
     }
-    const drawCarousel = () => {
-        let temp = [];
-        let imageGroup = pageContent[0]["fields"]["Item Image"].split(",");
-        let imageLength = pageContent[0]["fields"]["Item Image"].split(",").length;
-        temp.push(<button
-            type="button"
-            data-bs-target="#carouselExampleCrossfade"
-            data-bs-slide-to="0"
-            className="active"
-            aria-current="true"
-            aria-label="Slide 1"
-        ></button>)
-        for (let i = 1; i < imageLength; i++) {
-            temp.push(<button
-                type="button"
-                data-bs-target="#carouselExampleCrossfade"
-                data-bs-slide-to={i}
-                aria-label={"Slide " + (i + 1)} key={i}
-            ></button>)
-        }
-        setDrawCarouselButton(temp);
-        let tempImage = [];
-        tempImage.push(
-            <div className="float-left w-full carousel-item active">
-                <center><img src={"https://" + imageGroup[0]}
-                    className="block w-full h-auto rounded-lg"
-                    alt="Wild Landscape"
-                /></center>
-            </div>
-        )
-        for (let j = 1; j < imageGroup.length; j++) {
-            tempImage.push(<div className="float-left w-full carousel-item ">
-                <center><img src={"https://" + imageGroup[j].replace(" ", "")}
-                    className="block w-full h-auto rounded-lg"
-                    alt="Wild Landscape" />
-                </center></div>)
-
-        }
-        setDrawImagePane(tempImage);
-    }
     useEffect(() => {
         id && getDetails(id);
     }, [id]);
     useEffect(() => {
-        pageContent && pageContent.length > 0 && drawCarousel();
         pageContent && pageContent.length > 0 && setItemDesc(pageContent[0]["fields"]["Item Description"]);
         pageContent && pageContent.length > 0 && getOwnerData(pageContent[0]["fields"]["Rental Owner"]);
 
@@ -104,12 +63,12 @@ const Detail = ({ id }) => {
     }
     return (
         <section className="h-full bg-black">
-            <div style={{ maxWidth: "800px", margin: "auto", background: "#0c0c0c", borderRadius: "10px", padding: "10px" }} className="relative flex flex-col flex-nowrap" >
-                <div className="w-full backSticky"><FontAwesomeIcon icon={faArrowLeftLong} className="text-2xl" onClick={() => back()} /></div>
+            <div style={{ maxWidth: "800px", margin: "auto", background: "#0c0c0c", borderRadius: "10px", padding: "0px 50px 0px 50px" }} className="relative flex flex-col flex-nowrap detail" >
+                <div className="flex items-center w-full backSticky"><FontAwesomeIcon icon={faArrowLeftLong} className="text-2xl" onClick={() => back()} /></div>
                 <div className="flex flex-row items-center justify-center mb-10">
                     <div className="flex flex-col w-full">
                         {pageContent && pageContent.length > 0 && <DetailCarousel imageGroup={pageContent[0]["fields"]["Item Image"]} />}
-                        <div className="relative flex flex-row w-full px-5 pr-5">
+                        <div className="relative flex flex-row w-full">
                             <div>
                                 <p className="detailTitle">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Name"]}</p>
                                 <div className="detailPan">
@@ -117,14 +76,14 @@ const Detail = ({ id }) => {
                                     {/* <button className="font-sans text-xl font-semibold show_more" data-bs-toggle="modal" data-bs-target="#exampleModal">{showText}</button> */}
                                 </div>
                             </div>
-                            <div className="w-64 callStoreButton">
+                            <div className="w-64 mx-12 callStoreButton">
                                 <div className="w-64 h-8 "></div>
                                 <div className="detailRight">
                                     <p className="detailRentalOwnerName ">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Name"]}</p>
                                     <Link href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`}>
-                                        <p className="mb-5 text-base text-white hover:underline">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Owner Name"]}</p></Link>
+                                        <p className="mb-2.5 text-base text-white hover:underline">{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Rental Owner Name"]}</p></Link>
                                     <p className="py-5 text-xl font-extrabold text-white " style={{ borderTop: "1px solid #333" }}>{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Price"]}</p>
-                                    <a href={ownerDetail && ownerDetail.length > 0 && "tel:" + ownerDetail[0]["fields"]["Store Phone Number"]} className="flex flex-row justify-center storePhoneNumber"><FontAwesomeIcon icon={faPhone} className="text-xl" /><p id="PhoneNumber" className="mx-2 text-white">Call the store</p></a>
+                                    <a href={ownerDetail && ownerDetail.length > 0 && "tel:" + ownerDetail[0]["fields"]["Store Phone Number"]} className="flex flex-row justify-center storePhoneNumber"><FontAwesomeIcon icon={faPhone} className="text-base" /><p id="PhoneNumber" className="mx-2 text-white" style={{ fontSize:"15px"}}>Call the store</p></a>
                                 </div>
 
                             </div>
@@ -132,13 +91,13 @@ const Detail = ({ id }) => {
                     </div>
                 </div>
 
-                <div className="flex flex-row items-center justify-start py-5 mx-5 mr-5" style={{ borderTop: "1px solid #333" }}>
-                    <img src={ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Rental Store photos"]} style={{ borderRadius: "50%" }} className="w-16 h-16 " />
+                <div className="flex flex-row items-center justify-start py-10" style={{ borderTop: "1px solid #333" }}>
+                    <img src={ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Rental Store photos"]} style={{ borderRadius: "50%" }} className="w-12 h-12 mr-4" />
                     <div className="flex flex-col">
                         <Link href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`}>
-                            <p className="mx-3 mb-1 text-lg font-extrabold text-white cursor-pointer hover:underline">{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Name"]}</p>
+                            <p className="mb-1 text-lg font-extrabold text-white cursor-pointer hover:underline" style={{ lineHeight:"24px"}}>{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Name"]}</p>
                         </Link>
-                        <p className="mx-3 text-base text-white ">{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Google Rating"].toFixed(1) + "  Google Rating (" + ownerDetail[0]["fields"]["Reviews"] + ")"}</p>
+                        <p className="text-base text-white">{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Google Rating"].toFixed(1) + "  Google Rating (" + ownerDetail[0]["fields"]["Reviews"] + ")"}</p>
                     </div>
                 </div>
                 {pageContent && pageContent.length > 0 && <RandomCarousel itemID={pageContent[0]["fields"]["Item ID"]} rentalCategory={pageContent[0]["fields"]["Rental Category"]} />}
@@ -149,29 +108,6 @@ const Detail = ({ id }) => {
                     </div>
                     <div>
                         <a style={{ background: "#005ec2" }} className="flex flex-row items-center justify-center w-16 h-12 rounded-xl" href={ownerDetail && ownerDetail.length > 0 && "tel:" + ownerDetail[0]["fields"]["Store Phone Number"]}><FontAwesomeIcon icon={faPhone} className="text-xl " /></a>
-                    </div>
-                </div>
-
-                <div className="fixed top-0 left-0 hidden w-full h-full py-10 overflow-x-hidden overflow-y-auto outline-none modal fade"
-                    id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div className="relative w-auto pointer-events-none modal-dialog">
-                        <div
-                            className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
-                            <div
-                                className="flex items-center justify-between flex-shrink-0 p-4 border-b border-gray-200 modal-header rounded-t-md">
-                                <h5 className="text-xl font-medium leading-normal text-gray-800" id="exampleModalLabel" >{pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Name"]}</h5>
-                                <button type="button"
-                                    className="box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 btn-close focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div className="relative p-4 text-black modal-body">
-                                {pageContent && pageContent.length > 0 && pageContent[0]["fields"]["Item Description"]}
-                            </div>
-                            <div
-                                className="flex flex-wrap items-center justify-end flex-shrink-0 p-4 border-t border-gray-200 modal-footer rounded-b-md">
-                                <button type="button" data-bs-dismiss="modal" style={{ background: "black", padding: "5px 20px", borderRadius: "5px", color: "white" }}>Close</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

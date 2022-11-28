@@ -498,10 +498,10 @@ a {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  max-width: 1000px;
+  max-width: 800px;
   z-index: 100;
-  padding:20px 20px;
   background-color: #0c0c0c;
+  height: 100px
 }
 .detailSticky{
   position: -webkit-sticky;
@@ -509,15 +509,15 @@ a {
   bottom: 0;
   max-width: 1000px;
   z-index: 100;
-  padding:20px 20px;
+  padding:20px 0px;
   background-color: #0c0c0c;
-  padding-left: 20px;
   display: flex;
 }
 .detailSticky p{
   color:white;
 }
 .detailRight{
+  width: 250px;
   position: sticky;
   top:20px;
   padding: 30px 25px;
@@ -550,13 +550,14 @@ a {
   height:600px;
 }
 .detailTitle{
+  margin-top: 50px;
   font-family: sans-serif;
   font-style: normal;
   font-size: 30px;
   font-weight: 900;
   color: white;
-  padding-top: 20px;
-  width: 480px;
+  line-height: 30px;
+  width: 400px;
 
 }
 .detailContent{
@@ -612,21 +613,21 @@ a {
   color: white;
 }
 .searchBox{
-  width: 400px;
+  width: 350px;
   background-color: transparent;
   margin:auto;
-  padding: 8px;
-  margin-top:20px;
+  padding-right: 20px;
+  padding-left: 20px;
   border-radius: 30px;
+  height: 50px;
   border:1px solid white;
 
 }
 .homeTitle{
-  padding-top: 100px;
   text-align: center;
   color: white;
   font-style:normal;
-  font-size: 48px;
+  font-size: 45px;
   font-weight: 800;
 
 }
@@ -663,14 +664,17 @@ a {
 }
 
 .stickyBarSearch{
-  width: 300px;
+  width: 250px;
   border:1px solid #333;
   padding:10px;
   border-radius: 30px;
+  height: 40px;
 }
 .card{
-  width:300px;
-  height: 300px;
+  width:316px;
+  margin-right: 20px;
+  margin-bottom:15px;
+  height: auto;
   background-color: transparent;
   border-radius: 2px;
 }
@@ -686,14 +690,15 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 10px 10px 5px 10px;
+  padding: 2px 0px;
   font-size: 18px;
   font-weight: 700;
   color: white;
+  margin-top: 10px;
 
 }
 .card .rentalOwnerName{
-  padding: 5px 10px 5px 10px; 
+  padding: 2px 0px; 
   color: white;
   font-size: 15px;
 }
@@ -701,7 +706,7 @@ a {
   text-decoration: underline;
 }
 .card .itemPrice{
-  padding: 5px 10px 5px 10px; 
+  padding: 2px 0px; 
   font-size: 16px;
   color: white;
   font-weight: 100;
@@ -714,16 +719,15 @@ a {
   font-weight: 700;
 }
 .homeTitleBackground{
-  width:430px;
-  height: 50px;
+  width:380px;
+  height: 35px;
   background: #b02b4a;
   margin-top: -30px;
 }
-.card_list{
- max-width: 1440px;
+.cardList{
+ max-width: 1350px;
  height: auto;
- margin: auto;
- padding-top: 100px;
+ margin: auto;  
  padding-bottom: 50px;
  background-color: black;
 }
@@ -731,16 +735,43 @@ a {
   height: 400px;
 }
 .detailPan{
-  width: 450px;
+  width: 400px;
   position: relative;
 }
 .ownerNavbar{
   width: 250px;
-  margin-left: 20px;
+  height: 40px;
 }
 
 
 @media screen and (max-width: 767px) {
+  .ownerName{
+    font-size: 40px;
+  }
+  .stickyBarSearch{
+    margin-left: 5px;
+    width:100%;
+  }
+  .searchBox{
+    width: 300px;
+  }
+  .homeTitle{
+    font-size: 40px;
+  }
+  .homeTitleBackground{
+    width: 330px;
+    height: 30px;
+    margin-top: -25px;
+  }
+  .homeDetail{
+    margin-top: 10px;
+    margin-bottom: 25px;
+    font-size: 18px;
+  }
+  .search{
+    padding-bottom: 70px!important;
+
+  }
   .ownerNavbar{
     width: 100%;
   }
@@ -764,13 +795,14 @@ a {
     display: none;
   }
   .card{
-    width:80vw;
-    height: 65vw;
+    width:89vw;
+    height: auto;
+    margin-right: 0px;
   
   }
   .card img{
-    width: 80vw;
-    height: 45vw;
+    width: 89vw;
+    height: 50vw;
 
   }
   .detailRight{
@@ -790,12 +822,45 @@ a {
 }
 
 
-@media screen and (max-width: 550px) {
-  #next{
-    right: 20px;
+@media screen and (max-width: 479px) {
+  .ownerTop{
+    padding-left: 24px!important;
+    padding-right: 24px!important;
   }
-  #prev{
-    left: 20px;
+  .detail{
+    padding:0px 20px!important;
+  }
+  
+  .backSticky{
+    height: 80px;
+  }
+  .homeDetail{
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+  .logoImage{
+    height: 20px;
+  }
+  .logoTitle{
+    font-size:16px;
+    line-height: 20px;
+    margin-left: 5px;
+  }
+  .searchBox{
+    width:90%;
+    height: 45px;
+  }
+  .search{
+    padding-top: 60px!important;
+  }
+  .homeTitle{
+    font-size: 35px;
+  }
+  .homeTitleBackground{
+    width: 280px;
+    height: 30px;
+    margin-top: -25px;
   }
   .logo{
     justify-content: center;
@@ -810,21 +875,7 @@ a {
     height: 300px;
   }
   .ownerName{
-    font-size: 30px;
-  }
-  .searchBox{
-    width: 300px;
-  }
-  .homeTitle{
-    padding-top: 70px;
-    font-size: 32px;
-    font-weight: 800;
-  }
-  .homeTitleBackground{
-    width: 300px;
-    height: 30px;
-    margin-top: -18px;
-
+    font-size: 35px;
   }
   .categoryList{
     display: none;
@@ -832,22 +883,10 @@ a {
   .selectCategory{
     display: flex;
   }
-  .stickyBarSearch{
-    margin-left: 20px;
-    width:100%;
-  }
+
   #logoTitle{
     display: none;
   }
-  .homeDetail{
-    margin-top: 4px;
-    font-size: 15px;
-    margin-bottom: 10px;
-  }
-  .card_list{
-    padding-top: 0px;
-  }
- 
   .carouselImage{
     height: 350px;
   }
@@ -923,6 +962,25 @@ a {
 
 
 @media(hover: hover) and (pointer: fine) {
+
+}
+
+.navBar{
+  margin-top: 30px;
+}
+.search{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+@media screen and (max-width: 1350px){
+  .navBar{
+    padding-left: 30px;
+
+  }
+
+}
+@media screen and (max-width: 479px){
+  
 
 }
 

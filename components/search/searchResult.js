@@ -22,22 +22,21 @@ const SearchResult = ({ showData, lastPage, sticky, setSearchText }) => {
     return (
         <section style={{ background: "black", position: "relative" }}>
             {
-            !sticky ? '' : <div className="flex flex-row justify-between stickyBar">
+            !sticky ? '' : <div className="flex flex-row items-center justify-between stickyBar">
                 <Link href='/' >
                     <div className='flex flex-row items-center justify-start cursor-pointer'>
-                        <img src='https://uploads-ssl.webflow.com/5efdc8a4340de947404995b4/633641f1a9242e39af156ff9_Swiftdrop.svg' className="w-7" />
-                        <p id="logoTitle">SwiftDrop</p>
+                        <img src='https://uploads-ssl.webflow.com/5efdc8a4340de947404995b4/633641f1a9242e39af156ff9_Swiftdrop.svg' className="w-5" />
                     </div>
                 </Link>
                 <div className="flex flex-row items-center justify-around stickyBarSearch">
-                    <FontAwesomeIcon icon={faSearch} className=" text-xl mx-2.5"/>
-                    <input type="text" className="w-full p-1 text-base text-white outline-none home_search mx-2.5 bg-transparent" id="homeSearch" placeholder="e.g.SnowBoards" onKeyDown ={ (e) =>search(e) }/>
+                    <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl text-thin"/>
+                    <input type="text" className="w-full p-0.5 text-base text-white outline-none mx-2 bg-transparent" id="homeSearch" placeholder="e.g.SnowBoards" onKeyDown ={ (e) =>search(e) }/>
                 </div>
             </div>
 
             }
            
-            <div className="flex flex-row flex-wrap justify-center h-auto gap-8 py-24 pb-12 bg-black card_list" style={{ margin: "auto", maxWidth: "1440px" }} >
+            <div className="flex flex-row flex-wrap justify-center h-auto bg-black cardList" style={{ margin: "auto", maxWidth: "1440px" }} >
                 {
                     showData && showData.length > 0 && showData.map(({ fields, id }, index) => (
                         <GalleryItem fields={fields} index={index} id={id} key={id} />

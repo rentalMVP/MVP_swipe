@@ -30,21 +30,20 @@ const Gallery = ({ showData, lastPage, sticky }) => {
     return (
         <section className="relative bg-black">
             {
-            !sticky ? '' : <div className="flex flex-row items-center justify-between stickyBar">
+            !sticky ? '' : <div className="flex flex-row items-center justify-between stickyBar" style={{ paddingLeft:"15px"}}>
                 <Link href='/' >
                     <div className='flex flex-row items-center justify-start cursor-pointer'>
-                        <img src='https://uploads-ssl.webflow.com/5efdc8a4340de947404995b4/633641f1a9242e39af156ff9_Swiftdrop.svg' className="w-8"/>
-                        <p id="logoTitle">SwiftDrop</p>
+                        <img src='https://uploads-ssl.webflow.com/5efdc8a4340de947404995b4/633641f1a9242e39af156ff9_Swiftdrop.svg' className="w-5"/>
                     </div>
                 </Link>
                 <div className="flex flex-row items-center justify-around stickyBarSearch">
-                    <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl" />
+                    <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl font-thin" />
                     <input type="text" className="w-full p-0.5 mx-2 text-base text-white bg-transparent outline-none" id="home" placeholder="e.g.SnowBoards" />
                 </div>
             </div>
 
             }
-            <div className="flex flex-row flex-wrap justify-center gap-8 card_list" >
+            <div className="flex flex-row flex-wrap justify-center cardList" >
                 {
                     showData && showData.length > 0 && showData.map(({ fields, id }, index) => (
                         <GalleryItem fields={fields} index={index} id={id} key={index} />

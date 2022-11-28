@@ -432,6 +432,12 @@ a {
   right: 0px;
   font-size: 20px;
 }
+.ownerItemGrid{
+  width: 90vw;
+  margin:auto;
+  border-top: 1px solid #ffffff1a;
+  padding-top: 70px;
+}
 
 .show_more:hover {
   opacity: 0.5;
@@ -500,23 +506,27 @@ a {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  max-width: 800px;
+  width: 100%;
   z-index: 100;
   background-color: #0c0c0c;
-  height: 100px
+  height: 100px;
+  width: inherit;
 }
 .detailSticky{
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
-  max-width: 1000px;
+  width:100%;
   z-index: 100;
-  padding:20px 0px;
+  padding:20px 50px;
   background-color: #0c0c0c;
   display: flex;
 }
 .detailSticky p{
   color:white;
+}
+.detailPadding{
+  padding: 0px 50px ;
 }
 .detailRight{
   width: 250px;
@@ -671,10 +681,10 @@ input::placeholder{
 }
 .stickyBar{
   margin: auto;
-  max-width: 1350px;
+  width: 100%;
   height: auto;
   background-color: black;
-  position: sticky;
+  position: fixed;
   top: 0px;
   z-index: 100;
   padding-top: 20px;
@@ -838,6 +848,7 @@ input::placeholder{
   .detailTitle{
     width: 100%;
     font-size: 20px;
+    line-height: 22px;
   }
   .detailContent{
     width: 100%;
@@ -850,6 +861,12 @@ input::placeholder{
 
 
 @media screen and (max-width: 479px) {
+  .detailPadding{
+    padding:0px 20px;
+  }
+  .detailSticky{
+    padding:20px 20px!important;
+  }
   .ownerTop{
     padding-left: 24px!important;
     padding-right: 24px!important;

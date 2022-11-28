@@ -63,9 +63,9 @@ const Detail = ({ id }) => {
     }
     return (
         <section className="h-full bg-black">
-            <div style={{ maxWidth: "830px", margin: "auto", background: "#0c0c0c", borderRadius: "10px", padding: "0px 50px 0px 50px" }} className="relative flex flex-col flex-nowrap detail" >
-                <div className="flex items-center w-full backSticky"><FontAwesomeIcon icon={faArrowLeftLong} className="text-2xl" onClick={() => back()} /></div>
-                <div className="flex flex-row items-center justify-center mb-10">
+            <div style={{ maxWidth: "830px", margin: "auto", background: "#0c0c0c", borderRadius: "10px"}} className="relative flex flex-col flex-nowrap " >
+                <div className="flex items-center w-full backSticky detailPadding"><FontAwesomeIcon icon={faArrowLeftLong} className="text-2xl" onClick={() => back()} /></div>
+                <div className="flex flex-row items-center justify-center mb-10 detailPadding">
                     <div className="flex flex-col w-full">
                         {pageContent && pageContent.length > 0 && <DetailCarousel imageGroup={pageContent[0]["fields"]["Item Image"]} />}
                         <div className="relative flex flex-row w-full">
@@ -90,17 +90,20 @@ const Detail = ({ id }) => {
                         </div>
                     </div>
                 </div>
-
-                <div className="flex flex-row items-center justify-start py-10" style={{ borderTop: "1px solid #333" }}>
-                    <img src={ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Rental Store photos"]} style={{ borderRadius: "50%" }} className="w-12 h-12 mr-3.5" />
-                    <div className="flex flex-col">
-                        <Link href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`}>
-                            <p className="text-lg font-extrabold text-white cursor-pointer hover:underline" style={{ lineHeight:"24px"}}>{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Name"]}</p>
-                        </Link>
-                        <p className="text-white " style={{ fontSize:"15px"}}>{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Google Rating"].toFixed(1) + "  Google Rating (" + ownerDetail[0]["fields"]["Reviews"] + ")"}</p>
+                <div className="detailPadding">
+                    <div className="flex flex-row items-center justify-start py-10 " style={{ borderTop: "1px solid #333" }}>
+                        <img src={ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Rental Store photos"]} style={{ borderRadius: "50%" }} className="w-12 h-12 mr-3.5" />
+                        <div className="flex flex-col">
+                            <Link href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`}>
+                                <p className="text-lg font-extrabold text-white cursor-pointer hover:underline" style={{ lineHeight:"24px"}}>{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Name"]}</p>
+                            </Link>
+                            <p className="text-white " style={{ fontSize:"15px"}}>{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Google Rating"].toFixed(1) + "  Google Rating (" + ownerDetail[0]["fields"]["Reviews"] + ")"}</p>
+                        </div>
                     </div>
                 </div>
+                <div className="detailPadding">
                 {pageContent && pageContent.length > 0 && <RandomCarousel itemID={pageContent[0]["fields"]["Item ID"]} rentalCategory={pageContent[0]["fields"]["Rental Category"]} />}
+                </div>
                 <div className="flex flex-row items-center justify-between w-full detailSticky">
                     <div className="flex flex-col ">
                         <a href={`/rental_owner?query=${ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["id"]}`} className="text-sm hover:underline">{ownerDetail && ownerDetail.length > 0 && ownerDetail[0]["fields"]["Name"]}</a>

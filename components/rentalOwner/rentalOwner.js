@@ -128,15 +128,17 @@ const RentalOwner = ({ id }) => {
                         <div>
                             <p className="ownerName">{ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Name"]}</p>
                         </div>
-                        <div className="flex flex-row items-center justify-center pb-10 my-5" style={{ borderBottom: "1px solid #ffffff1a" }}>
+                        <div className="flex flex-row items-center justify-center pb-6 my-5" style={{  }}>
                             <a className="flex flex-row items-center" id="callButton" href={ownerContent && ownerContent.length > 0 && "tel:" + ownerContent[0]["fields"]["Store Phone Number"]} style={{ padding:"0px 25px", height:"50px"}}><FontAwesomeIcon icon={faPhone} className="text-lg mr-2.5" /> Call Us</a>
                             <a href={ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Website"]} className="flex flex-row items-center websiteLink" style={{ padding:"0px 25px", height:"50px"}}><FontAwesomeIcon icon={faGlobe} className="text-lg " /><p className="websiteText">Website</p> </a>
                             <button style={{ border: "1px solid #333", borderRadius: "10px", padding:"0px 25px", height:"50px" }} className="flex flex-row items-center  bg-transparent mx-2.5">Google Rating {ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Google Rating"].toFixed(1) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}  </button>
                         </div>
                     </div>
-
-                    <Gallery showData={showData} lastPage={lastPage} sticky={sticky} style={{ width:"95vw"}}/>
-                    <div className="flex flex-row justify-between w-full detailSticky" style={{ paddingLeft:"20px", paddingRight:"20px"}}>
+                    <div className="ownerItemGrid">
+                        
+                    </div>
+                    <Gallery showData={showData} lastPage={lastPage} sticky={sticky} />
+                    <div className="flex flex-row justify-between w-full detailSticky" style={{ paddingLeft:"40px", paddingRight:"40px"}}>
                         <div className="flex flex-col">
                             <p className="text-sm">{ownerContent && ownerContent.length > 0 && (" Google Rating " + ownerContent[0]["fields"]["Google Rating"].toFixed(1)) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}</p>
                             <p className="text-lg font-extrabold ">{ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Name"]}</p>

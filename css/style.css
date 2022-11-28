@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 *,
 *::before,
@@ -151,67 +151,6 @@ a {
   }
 }
 
-.light {
-  animation: light 5s ease-in-out 0s infinite alternate;
-}
-
-@keyframes light {
-  0% {
-    width: 10%;
-    opacity: 0.2;
-  }
-
-  50% {
-    width: 50%;
-    opacity: 0.5;
-  }
-
-  60% {
-    width: 60%;
-    opacity: 0.6;
-  }
-
-  100% {
-    width: 100%;
-    opacity: 1;
-  }
-}
-
-.ground {
-  animation: ground 5s ease-in-out infinite alternate;
-}
-
-@keyframes ground {
-  0% {
-    fill: #fff;
-    opacity: 0.9;
-  }
-
-  80% {
-    fill: rgba(255, 255, 255, 0.616);
-  }
-
-  100% {
-    fill: #fff;
-    opacity: 1;
-  }
-}
-
-.ether {
-  animation: ether 5s ease-in-out 0s infinite alternate;
-}
-
-@keyframes ether {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-
-  100% {
-    -webkit-transform: translateY(-30px);
-    transform: translateY(-30px);
-  }
-}
 
 .tab input {
   position: absolute;

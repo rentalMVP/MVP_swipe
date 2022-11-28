@@ -25,7 +25,7 @@ const Search = ( {category, setCategory}) =>{
         <section className="w-full bg-black search">
             <p className="homeTitle">RENT & ENJOY. </p>
             <div className="m-auto homeTitleBackground"></div>
-            <p className="m-auto my-4 mb-6 text-xl font-light text-center text-white homeDetail">Explore Sydney's Largest Rental Directory.</p>
+            <p className="m-auto my-1 mb-6 text-lg font-thin text-center text-white homeDetail">Explore Sydney's Largest Rental Directory.</p>
             {/* <CategoryList category = {category} setCategory = {setCategory}/> */}
             <div className="flex flex-row items-center justify-around searchBox">
                 <FontAwesomeIcon icon = { faSearch} className="text-xl text-white "/>

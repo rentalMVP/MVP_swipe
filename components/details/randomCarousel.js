@@ -32,7 +32,7 @@ const RandomCarousel = ({ itemID, rentalCategory }) =>{
   },[itemID]);
   return (
     <>
-        <div className="flex flex-row flex-wrap justify-around px-7">
+        <div className="flex flex-row flex-wrap justify-around px-0">
           {
             similarPane
           }

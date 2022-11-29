@@ -29,7 +29,7 @@ const SearchResult = ({ showData, lastPage, sticky, setSearchText }) => {
                     </div>
                 </Link>
                 <div className="flex flex-row items-center justify-around mr-0 stickyBarSearch">
-                    <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl text-thin"/>
+                    <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl text-white text-thin"/>
                     <input type="text" className="w-full p-0.5 text-base text-white outline-none mx-2 bg-transparent mr-0" id="homeSearch" placeholder="e.g.SnowBoards" onKeyDown ={ (e) =>search(e) }/>
                 </div>
             </div>

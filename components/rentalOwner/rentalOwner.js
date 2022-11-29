@@ -8,7 +8,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons"
 import { faGlobe } from "@fortawesome/free-solid-svg-icons"
 import { useEffect, useState } from "react"
 import Link from "next/link"
-import ScrollToTop from "../scrollToTop"
+import Loading from "../home/loading"
 const RentalOwner = ({ id }) => {
     const [ownerContent, setOwnerContent] = useState([]);
     const [showData, setShowData] = useState([]);
@@ -65,11 +65,6 @@ const RentalOwner = ({ id }) => {
             }, 1000);
         }
     };
-    const showPhonenumber = () => {
-        document.getElementById('callButton').innerHTML = ownerContent[0]["fields"]["Store Phone Number"];
-
-
-    }
     useEffect(() => {
         window.addEventListener("scroll", detectScroll);
         return () => {
@@ -110,28 +105,27 @@ const RentalOwner = ({ id }) => {
                         </div>
                     </Link>
                     <div className="flex flex-row items-center justify-around p-2 ownerNavbar rounded-3xl mx-2.5 mr-0" style={{ border:"1px solid #333"}} >
-                        <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl" />
+                        <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl text-white" />
                         <input type="text" className="w-full p-1 mr-0 text-base text-white bg-transparent outline-none" id="home" placeholder="e.g.SnowBoards" onClick={ (e) => search(e)}/>
                     </div>
-
                 </div>
             </section>
             <section>
-                <div className="h-full py-0 pb-0 bg-black">
+                {
+                    ownerContent && ownerContent.length > 0 ?<div className="h-full py-0 pb-0 bg-black">
                     <div className="relative flex flex-col mb-5 bg-black rounded-lg">
                         <div className="ownerDetailPane">
                             <div className="gradient"></div>
                             {ownerContent && ownerContent.length > 0 && <img src={ownerContent[0]["fields"]["Rental Store photos"]} className="bg-white bg-cover ownerImage" />
-                            }
-                            
+                            } 
                         </div>
                         <div>
                             <p className="ownerName">{ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Name"]}</p>
                         </div>
                         <div className="flex flex-row items-center justify-center pb-6 my-5" style={{  }}>
-                            <a className="flex flex-row items-center" id="callButton" href={ownerContent && ownerContent.length > 0 && "tel:" + ownerContent[0]["fields"]["Store Phone Number"]} style={{ padding:"0px 25px", height:"50px"}}><FontAwesomeIcon icon={faPhone} className="text-lg mr-2.5" /> Call Us</a>
-                            <a href={ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Website"]} className="flex flex-row items-center websiteLink" style={{ padding:"0px 25px", height:"50px"}}><FontAwesomeIcon icon={faGlobe} className="text-lg " /><p className="websiteText">Website</p> </a>
-                            <button style={{ border: "1px solid #333", borderRadius: "10px", padding:"0px 25px", height:"50px" }} className="flex flex-row items-center  bg-transparent mx-2.5">Google Rating {ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Google Rating"].toFixed(1) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}  </button>
+                            <a className="flex flex-row items-center" id="callButton" href={ownerContent && ownerContent.length > 0 && "tel:" + ownerContent[0]["fields"]["Store Phone Number"]} style={{ padding:"0px 25px", height:"50px", fontFamily:"poppins-light", color:"white"}}><FontAwesomeIcon icon={faPhone} className="text-lg mr-2.5 text-white" /> Call Us</a>
+                            <a href={ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Website"]} className="flex flex-row items-center websiteLink" style={{ padding:"0px 25px", height:"50px", fontFamily:"poppins-light"}}><FontAwesomeIcon icon={faGlobe} className="text-lg text-white" /><p className="websiteText">Website</p> </a>
+                            <button style={{ border: "1px solid #333", borderRadius: "10px", padding:"0px 25px", height:"50px", fontFamily:"poppins-light", color:"white" }} className="flex flex-row items-center  bg-transparent mx-2.5">Google Rating {ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Google Rating"].toFixed(1) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}  </button>
                         </div>
                     </div>
                     <div className="ownerItemGrid">
@@ -140,14 +134,15 @@ const RentalOwner = ({ id }) => {
                     <Gallery showData={showData} lastPage={lastPage} sticky={sticky} />
                     <div className="flex flex-row justify-between w-full detailSticky" style={{ paddingLeft:"40px", paddingRight:"40px"}}>
                         <div className="flex flex-col">
-                            <p className="text-sm">{ownerContent && ownerContent.length > 0 && (" Google Rating " + ownerContent[0]["fields"]["Google Rating"].toFixed(1)) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}</p>
-                            <p className="text-lg font-extrabold ">{ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Name"]}</p>
+                            <p className="text-sm text-white" style={{ fontFamily:"poppins-regular"}}>{ownerContent && ownerContent.length > 0 && (" Google Rating " + ownerContent[0]["fields"]["Google Rating"].toFixed(1)) + " (" + ownerContent[0]["fields"]["Reviews"] + ")"}</p>
+                            <p className="text-lg font-extrabold text-white" style={{ fontFamily:"poppins-bold"}}>{ownerContent && ownerContent.length > 0 && ownerContent[0]["fields"]["Name"]}</p>
                         </div>
                         <div>
-                            <a style={{ background: "#005ec2" }} id="PhoneNumber" className="flex flex-row items-center justify-center w-16 h-12 rounded-xl" href={ownerContent && ownerContent.length > 0 && "tel:" + ownerContent[0]["fields"]["Store Phone Number"]} ><FontAwesomeIcon icon={faPhone} className="text-xl" /></a>
+                            <a style={{ background: "#005ec2" }} id="PhoneNumber" className="flex flex-row items-center justify-center w-16 h-12 rounded-xl" href={ownerContent && ownerContent.length > 0 && "tel:" + ownerContent[0]["fields"]["Store Phone Number"]} ><FontAwesomeIcon icon={faPhone} className="text-xl text-white" /></a>
                         </div>
                     </div>
-                </div>
+                </div>:<div className="flex items-center justify-center h-full my-60"><Loading/></div>
+                }
             </section>
         </>
     )

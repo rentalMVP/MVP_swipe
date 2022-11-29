@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
 
 *,
 *::before,
@@ -6,18 +6,45 @@
   margin: 0;
   padding: 0;
 }
-*{
-  font-family: 'Poppins', sans-serif!important;
+input{
+  font-family: poppins-regular!important;
 }
-
-body {
-  box-sizing: border-box;
-  font-size: 1rem;
-  font-weight: 400;
-  scroll-behavior: smooth;
-  color: #f1f1f1;
+@font-face {
+  font-family: poppins-extrabold;
+  src: url(Poppins-ExtraBold.ttf);
 }
-
+@font-face {
+  font-family: poppins-bold;
+  src: url(Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: poppins-extralight;
+  src: url(Poppins-ExtraLight.ttf);
+}
+@font-face {
+  font-family: poppins-light;
+  src: url(Poppins-Light.ttf);
+}
+@font-face {
+  font-family: poppins-medium;
+  src: url(Poppins-Medium.ttf);
+}
+@font-face {
+  font-family: poppins-regular;
+  src: url(Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: poppins-semibold;
+  src: url(Poppins-SemiBold.ttf);
+}
+@font-face {
+  font-family: poppins-thin;
+  src: url(Poppins-Thin.ttf);
+}
+@font-face {
+  font-family: poppins-black;
+  src: url(Poppins-Black.ttf);
+}
 h1 {
   font-size: clamp(1.913rem, calc(12px + 2.475vw), 2.587rem);
   line-height: 1.1;
@@ -478,6 +505,7 @@ a {
   height: 230px;
 }
 .storePhoneNumber{
+  font-family: poppins-bold;
   width: 100%;
   padding:15px 20px;
   background-color: #005ec2;
@@ -516,10 +544,9 @@ a {
 }
 .detailTitle{
   margin-top: 50px;
-  font-family: sans-serif;
+  font-family: poppins-black;
   font-style: normal;
   font-size: 30px;
-  font-weight: 900;
   color: white;
   line-height: 30px;
   width: 400px;
@@ -531,14 +558,14 @@ a {
   padding:20px 0px;
   width: 100%;
   font-size: 15px;
-  font-family: 'Poppins', sans-serif;
+  font-family: poppins-light;
   color:white;
   line-height: 20px;
 }
 .detailRentalOwnerName{
+  font-family: poppins-bold;
   font-size: 18px;
   color: white;
-  font-weight: 600;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -554,10 +581,9 @@ a {
  
 }
 .ownerName{
-  font-family: sans-serif;
+font-family: poppins-black;
   font-style: normal;
   font-size: 50px;
-  font-weight: 900;
   color:white;
   text-align: center;
 }
@@ -590,11 +616,11 @@ a {
 
 }
 .homeTitle{
+  font-family: poppins-extrabold;
   text-align: center;
   color: white;
   font-style:normal;
   font-size: 45px;
-  font-weight: 800;
 
 }
 .categoryList{
@@ -665,13 +691,14 @@ input::placeholder{
   text-overflow: ellipsis;
   padding: 2px 0px;
   font-size: 18px;
-  font-weight: 700;
+ font-family: poppins-bold;
   color: white;
   margin-top: 10px;
   line-height:22px;
 
 }
 .card .rentalOwnerName{
+  font-family: poppins-light;
   padding: 2px 0px; 
   color: white;
   font-size: 15px;
@@ -680,18 +707,18 @@ input::placeholder{
   text-decoration: underline;
 }
 .card .itemPrice{
+  font-family: poppins-light;
   padding: 2px 0px; 
   font-size: 16px;
   color: white;
-  font-weight: 100;
   margin-bottom: 10px;
 
 }
-#logoTitle{
+.logoTitle{
   margin-left: 20px;
   font-size: 20px;
   color:white;
-  font-weight: 700;
+  font-family: poppins-bold;
 }
 .homeTitleBackground{
   width:380px;
@@ -747,6 +774,7 @@ input::placeholder{
     margin-top: -25px;
   }
   .homeDetail{
+    font-family: poppins-light;
     margin-top: 5px;
     margin-bottom: 25px;
     font-size: 18px;

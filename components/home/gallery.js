@@ -37,7 +37,7 @@ const Gallery = ({ showData, lastPage, sticky }) => {
                         </div>
                     </Link>
                     <div className="flex flex-row items-center justify-around mr-0 stickyBarSearch">
-                        <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl font-thin" />
+                        <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl font-thin text-white" />
                         <input type="text" className="w-full p-0.5 mx-2 text-base text-white bg-transparent outline-none mr-0" id="home" placeholder="e.g.SnowBoards" />
                     </div>
                 </div>

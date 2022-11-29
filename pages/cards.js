@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import Detail from '../components/details/detail' 
+import Detail from '../components/details/detail';
 export default function CardsPage() {
     const router = useRouter()
     const { query } = router.query;

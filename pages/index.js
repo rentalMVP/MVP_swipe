@@ -127,7 +127,7 @@ export default function IndexPage() {
         if (!lastPage) {
           loadData(category, lastDocument);
         }
-      }, 2000);
+      }, 1000);
     }
   };
 

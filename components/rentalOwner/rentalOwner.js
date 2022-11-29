@@ -62,7 +62,7 @@ const RentalOwner = ({ id }) => {
                 if (!lastPage) {
                     ownerContent && ownerContent.length > 0 && loadData(lastDocument, ownerContent[0]["fields"]["Name"]);
                 }
-            }, 2000);
+            }, 1000);
         }
     };
     const showPhonenumber = () => {

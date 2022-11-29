@@ -22,18 +22,18 @@ const SearchResult = ({ showData, lastPage, sticky, setSearchText }) => {
     return (
         <section style={{ background: "black", position: "relative" }}>
             {
-            !sticky ? '' : <div className="flex flex-row items-center justify-between stickyBar">
+            !sticky ? '' : <div className=" fixed-top" style={{ width:"100%", background:"black"}}><div className="flex flex-row items-center justify-between stickyBar topNavbarPadding">
                 <Link href='/' >
                     <div className='flex flex-row items-center justify-start cursor-pointer'>
                         <img src='https://uploads-ssl.webflow.com/5efdc8a4340de947404995b4/633641f1a9242e39af156ff9_Swiftdrop.svg' className="w-5" />
                     </div>
                 </Link>
-                <div className="flex flex-row items-center justify-around stickyBarSearch">
+                <div className="flex flex-row items-center justify-around mr-0 stickyBarSearch">
                     <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl text-thin"/>
-                    <input type="text" className="w-full p-0.5 text-base text-white outline-none mx-2 bg-transparent" id="homeSearch" placeholder="e.g.SnowBoards" onKeyDown ={ (e) =>search(e) }/>
+                    <input type="text" className="w-full p-0.5 text-base text-white outline-none mx-2 bg-transparent mr-0" id="homeSearch" placeholder="e.g.SnowBoards" onKeyDown ={ (e) =>search(e) }/>
                 </div>
             </div>
-
+            </div>
             }
            
             <div className="flex flex-row flex-wrap justify-center h-auto bg-black cardList" style={{ margin: "auto", maxWidth: "1440px" }} >

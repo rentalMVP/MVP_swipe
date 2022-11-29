@@ -7,7 +7,7 @@
   padding: 0;
 }
 *{
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif!important;
 }
 
 body {
@@ -620,20 +620,23 @@ input::placeholder{
 }
 .stickyBar{
   margin: auto;
-  width: 100%;
+  max-width: 1350px;
   height: auto;
   background-color: black;
-  position: fixed;
   top: 0px;
   z-index: 100;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.topNavbarPadding{
+  width: 90vw;
+  padding-left: 0px;
+  padding-right: 0px;
 
 }
 
 .stickyBarSearch{
+
   width: 250px;
   border:1px solid #333;
   padding:10px;
@@ -717,6 +720,10 @@ input::placeholder{
 
 
 @media screen and (max-width: 767px) {
+  .topNavbarPadding{
+    padding-left: 32px!important;
+    padding-right: 32px!important;
+  }
   .detail{
     padding-left: 30px!important;
     padding-right: 30px!important;
@@ -797,18 +804,25 @@ input::placeholder{
   }
   
 }
+@media screen and (max-width: 991px){
+  .topNavbarPadding{
+    width: 100vw;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
 
+}
 
 @media screen and (max-width: 479px) {
+  .topNavbarPadding{
+    padding-left: 20px!important;
+    padding-right: 20px!important;
+  }
   .detailPadding{
     padding:0px 20px;
   }
   .detailSticky{
     padding:20px 20px!important;
-  }
-  .ownerTop{
-    padding-left: 24px!important;
-    padding-right: 24px!important;
   }
   .detail{
     padding:0px 20px!important;

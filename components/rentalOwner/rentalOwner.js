@@ -78,7 +78,7 @@ const RentalOwner = ({ id }) => {
     });
     const detectScroll = () => {
         if (window.pageYOffset >= 850) {
-            setSticky(true);
+            setSticky(false);
         }
         if (window.pageYOffset < 850) {
             setSticky(false);
@@ -103,15 +103,15 @@ const RentalOwner = ({ id }) => {
     return (
         <>
             <section className="py-4 bg-black sticky-top">
-                <div style={{ maxWidth: "1315px", margin: "auto", paddingRight:"32px", paddingLeft:"32px" }} className="flex flex-row justify-between ownerTop">
+                <div style={{ maxWidth: "1350px", margin: "auto" }} className="flex flex-row justify-between ownerTop topNavbarPadding">
                     <Link href='/' >
                         <div className='flex flex-row items-center justify-start cursor-pointer logo'>
                             <img src='https://uploads-ssl.webflow.com/5efdc8a4340de947404995b4/633641f1a9242e39af156ff9_Swiftdrop.svg' className="h-auto logoImage" />
                         </div>
                     </Link>
-                    <div className="flex flex-row items-center justify-around p-2 ownerNavbar rounded-3xl mx-2.5" style={{ border:"1px solid #333"}} >
+                    <div className="flex flex-row items-center justify-around p-2 ownerNavbar rounded-3xl mx-2.5 mr-0" style={{ border:"1px solid #333"}} >
                         <FontAwesomeIcon icon={faSearch} className="mx-3 text-xl" />
-                        <input type="text" className="w-full p-1 text-base text-white bg-transparent outline-none" id="home" placeholder="e.g.SnowBoards" onClick={ (e) => search(e)}/>
+                        <input type="text" className="w-full p-1 mr-0 text-base text-white bg-transparent outline-none" id="home" placeholder="e.g.SnowBoards" onClick={ (e) => search(e)}/>
                     </div>
 
                 </div>
